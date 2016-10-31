@@ -1,1 +1,1 @@
-include ':app', ':day36_mvc_demo'
+include ':app', ':day36_mvc_demo', ':day36_mvp_demo', ':day36_depend_inject_demo'

@@ -10,14 +10,18 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/day36_depend_inject_demo" />
             <option value="$PROJECT_DIR$/day36_mvc_demo" />
+            <option value="$PROJECT_DIR$/day36_mvp_demo" />
           </set>
         </option>
         <option name="myModules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/day36_depend_inject_demo" />
             <option value="$PROJECT_DIR$/day36_mvc_demo" />
+            <option value="$PROJECT_DIR$/day36_mvp_demo" />
           </set>
         </option>
       </GradleProjectSettings>

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Day36_depend_inject_demo</string>
+    <string name="name">这是一个字符串</string>
+</resources>
