@@ -2,6 +2,8 @@ package com.androidxx.yangjw.day36_mvp_demo.presenter;
 
 import android.content.Context;
 
+import com.androidxx.yangjw.day36_mvp_demo.model.IMainModel;
+import com.androidxx.yangjw.day36_mvp_demo.model.Main2Model;
 import com.androidxx.yangjw.day36_mvp_demo.model.MainModel;
 import com.androidxx.yangjw.day36_mvp_demo.model.bean.GiftBean;
 import com.androidxx.yangjw.day36_mvp_demo.presenter.callback.Callback;
@@ -10,14 +12,14 @@ import com.androidxx.yangjw.day36_mvp_demo.ui.view.IMainView;
 /**
  * Created by yangjw on 2016/10/31.
  */
-public class MainPresenter implements Callback{
+public class MainPresenter implements Callback,IMainPresenter{
 
-    private MainModel mainModel;
+    private IMainModel mainModel;
     private IMainView mainView;
 
     public MainPresenter(IMainView mainView) {
         this.mainView = mainView;
-        this.mainModel = new MainModel();
+        this.mainModel = new Main2Model();
     }
 
     public void queryList(int pageno) {

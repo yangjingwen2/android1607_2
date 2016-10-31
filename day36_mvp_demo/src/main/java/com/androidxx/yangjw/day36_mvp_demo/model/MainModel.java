@@ -12,7 +12,7 @@ import org.xutils.x;
 /**
  * Created by yangjw on 2016/10/31.
  */
-public class MainModel {
+public class MainModel implements IMainModel{
 
     /**
      * 请求列表数据

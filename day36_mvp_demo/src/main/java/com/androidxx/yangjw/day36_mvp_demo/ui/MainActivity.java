@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.androidxx.yangjw.day36_mvp_demo.R;
 import com.androidxx.yangjw.day36_mvp_demo.model.bean.GiftBean;
+import com.androidxx.yangjw.day36_mvp_demo.presenter.IMainPresenter;
 import com.androidxx.yangjw.day36_mvp_demo.presenter.MainPresenter;
 import com.androidxx.yangjw.day36_mvp_demo.tools.LogUtils;
 import com.androidxx.yangjw.day36_mvp_demo.ui.view.IMainView;
@@ -14,7 +15,7 @@ import com.androidxx.yangjw.day36_mvp_demo.ui.view.IMainView;
  */
 public class MainActivity extends AppCompatActivity implements IMainView{
 
-    private MainPresenter mainPresenter;
+    private IMainPresenter mainPresenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
