@@ -15,6 +15,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!" />
+    <fragment
+        android:id="@+id/fragment_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:name="com.androidxx.yangjw.day36_depend_inject_demo.MyFragment"/>
     <TextView
         android:id="@+id/main_show_txt2"
         android:layout_width="wrap_content"
