@@ -1,5 +1,8 @@
 package com.androidxx.yangjw.day38_okhttp_get_post_demo.http;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Handler;
 import android.os.Message;
 
@@ -23,12 +26,30 @@ public class OkHttpTool {
     private static OkHttpClient okHttpClient;
     public static final int OKHTTP_SUCCESS = 1;
     public static final int OKHTTP_FAIL = 0;
+    private static ConnectivityManager connectivityManager;
 
     public static OkHttpHelper init(String url) {
+        //判断是否有可用的网络
+        //....
+
         if (okHttpClient == null) {
             okHttpClient = new OkHttpClient();
         }
         return new OkHttpHelper(url);
+    }
+
+    /**
+     * 判断当前网络是否可用
+     *
+     * @return
+     */
+    private static boolean networkIsAvailable(Context context) {
+        connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        if (activeNetworkInfo == null) {
+            return false;
+        }
+        return activeNetworkInfo.isAvailable();
     }
 
     public static class OkHttpHelper {
