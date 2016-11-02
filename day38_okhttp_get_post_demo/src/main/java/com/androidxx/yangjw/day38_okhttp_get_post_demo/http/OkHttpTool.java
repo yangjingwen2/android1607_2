@@ -9,6 +9,8 @@ import android.os.Message;
 import com.androidxx.yangjw.day38_okhttp_get_post_demo.ICallback;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -27,6 +29,7 @@ public class OkHttpTool {
     public static final int OKHTTP_SUCCESS = 1;
     public static final int OKHTTP_FAIL = 0;
     private static ConnectivityManager connectivityManager;
+    private static List<Call> callList = new ArrayList<>();
 
     public static OkHttpHelper init(String url) {
         //判断是否有可用的网络
@@ -50,6 +53,16 @@ public class OkHttpTool {
             return false;
         }
         return activeNetworkInfo.isAvailable();
+    }
+
+    /**
+     * 终止所有的网络请求
+     */
+    public static void cancelAll() {
+        for (int i = 0; i < callList.size(); i++) {
+            callList.get(i).cancel();
+        }
+        callList.clear();
     }
 
     public static class OkHttpHelper {
@@ -83,7 +96,8 @@ public class OkHttpTool {
                     .url(path)
                     .post(formBody)
                     .build();
-            okHttpClient.newCall(request).enqueue(new Callback() {
+            Call call =  okHttpClient.newCall(request);
+            call.enqueue(new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
                     //运行在子线程中
@@ -92,6 +106,7 @@ public class OkHttpTool {
                     message.obj = e.getMessage();
                     message.what = OKHTTP_FAIL;
                     mHandler.sendMessage(message);
+                    callList.remove(call);
                 }
 
                 @Override
@@ -101,8 +116,10 @@ public class OkHttpTool {
                     message.obj = response.body().string();
                     message.what = OKHTTP_SUCCESS;
                     mHandler.sendMessage(message);
+                    callList.remove(call);
                 }
             });
+            callList.add(call);
 
             return this;
         }
@@ -117,7 +134,9 @@ public class OkHttpTool {
                     .url(path)
                     .get()
                     .build();
-            okHttpClient.newCall(request).enqueue(new Callback() {
+            Call call =  okHttpClient.newCall(request);
+            callList.add(call);
+            call.enqueue(new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
                     //运行在子线程中
@@ -126,6 +145,7 @@ public class OkHttpTool {
                     message.obj = e.getMessage();
                     message.what = OKHTTP_FAIL;
                     mHandler.sendMessage(message);
+                    callList.remove(call);
                 }
 
                 @Override
@@ -135,6 +155,8 @@ public class OkHttpTool {
                     message.obj = response.body().string();
                     message.what = OKHTTP_SUCCESS;
                     mHandler.sendMessage(message);
+                    response.body().close();
+                    callList.remove(call);
                 }
             });
 
