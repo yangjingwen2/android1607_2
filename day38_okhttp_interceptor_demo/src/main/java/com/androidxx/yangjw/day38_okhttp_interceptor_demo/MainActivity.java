@@ -20,7 +20,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 /**
- * Okhttp的拦截器
+ * Okhttp的拦截器和缓存
  */
 public class MainActivity extends AppCompatActivity {
 
