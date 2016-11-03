@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.androidxx.yangjw.day39_retrofit_rxjava_demo.R;
 import com.androidxx.yangjw.day39_retrofit_rxjava_demo.bean.SelectBean;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 import java.util.Map;
@@ -84,7 +85,7 @@ public class MainSelectAdapter extends BaseExpandableListAdapter {
         }
         String key = dateList.get(groupPosition);
         SelectBean.DataBean.ItemsBean itemsBean = map.get(key).get(childPosition);
-        view.setImageResource(R.mipmap.ic_launcher);
+        Picasso.with(context).load(itemsBean.getCover_image_url()).into(view);
         return view;
     }
 

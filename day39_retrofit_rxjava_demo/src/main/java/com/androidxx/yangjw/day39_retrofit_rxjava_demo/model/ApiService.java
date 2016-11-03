@@ -1,4 +1,4 @@
-package com.androidxx.yangjw.day39_retrofit_rxjava_demo;
+package com.androidxx.yangjw.day39_retrofit_rxjava_demo.model;
 
 import com.androidxx.yangjw.day39_retrofit_rxjava_demo.bean.SelectBean;
 
