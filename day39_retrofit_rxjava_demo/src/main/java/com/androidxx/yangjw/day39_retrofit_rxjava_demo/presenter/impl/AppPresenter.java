@@ -14,7 +14,9 @@ import java.util.List;
 import java.util.Map;
 
 import rx.Observable;
+import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action0;
 import rx.functions.Action1;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
@@ -68,13 +70,30 @@ public class AppPresenter implements IAppPresenter {
                 })
                 .subscribeOn(Schedulers.newThread()) //表示上方都执行在子线程中
                 .observeOn(AndroidSchedulers.mainThread())//下方都执行在主线程中
-                .subscribe(new Action1<Map<String, List<SelectBean.DataBean.ItemsBean>>>() {
+                .subscribe(new Observer<Map<String, List<SelectBean.DataBean.ItemsBean>>>() {
                     @Override
-                    public void call(Map<String, List<SelectBean.DataBean.ItemsBean>> stringListMap) {
-//                        mainSelectAdapter.notifyDataSetChanged();
+                    public void onCompleted() {
                         Log.i(TAG, "call: ---- ");
                         mainView.refreshAdapter(dateList,map);
                     }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(Map<String, List<SelectBean.DataBean.ItemsBean>> map) {
+
+                    }
                 });
+//                .subscribe(new Action1<Map<String, List<SelectBean.DataBean.ItemsBean>>>() {
+//                    @Override
+//                    public void call(Map<String, List<SelectBean.DataBean.ItemsBean>> stringListMap) {
+////                        mainSelectAdapter.notifyDataSetChanged();
+//                        Log.i(TAG, "call: ---- ");
+//                        mainView.refreshAdapter(dateList,map);
+//                    }
+//                });
     }
 }
