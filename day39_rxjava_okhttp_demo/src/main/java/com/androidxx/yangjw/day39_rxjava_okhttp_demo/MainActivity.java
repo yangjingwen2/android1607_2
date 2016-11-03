@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     TextView mShowTxt2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
@@ -45,8 +46,10 @@ public class MainActivity extends AppCompatActivity {
                 .url(GET_URL)
                 .build();
 
+        Log.i(TAG, "onCreate: 11111111111111");
         Observable.just(request)
                 //运行在子线程中
+                //        Schedulers.io()也是子线程，用来进行io操作的线程，比如文件读取，比如网络下载等等
                 .subscribeOn(Schedulers.newThread()) //表示被观察者运行在新的线程中
                 .map(new Func1<Request, String>() {
                     @Override
@@ -63,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
                         return string;
                     }
                 })
+                //AndroidSchedulers是在RxAndroid包下
                 .observeOn(AndroidSchedulers.mainThread())
                 //运行在主线程中
                 .map(new Func1<String, String>() {
@@ -101,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-
+        Log.i(TAG, "onCreate: 22222222222222222");
     }
 
 
