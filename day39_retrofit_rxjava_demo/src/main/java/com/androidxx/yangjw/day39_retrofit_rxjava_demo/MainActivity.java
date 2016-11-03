@@ -67,8 +67,6 @@ public class MainActivity extends AppCompatActivity implements IMainView{
 
     @Override
     public void refreshAdapter(List<String> groupList, Map<String, List<SelectBean.DataBean.ItemsBean>> map) {
-        dateList.clear();
-        this.map.clear();
         dateList.addAll(groupList);
         this.map.putAll(map);
         mainSelectAdapter.notifyDataSetChanged();
