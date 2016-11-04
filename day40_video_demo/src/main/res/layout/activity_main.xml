@@ -28,4 +28,10 @@
         android:layout_height="wrap_content"
         android:onClick="click"
         android:text="SurfaceView+MediaPalyer自定义视频播放器" />
+    <Button
+        android:id="@+id/main_vitamio_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="click"
+        android:text="Vitamio视频播放器" />
 </LinearLayout>

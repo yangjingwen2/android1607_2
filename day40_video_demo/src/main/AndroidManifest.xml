@@ -19,7 +19,8 @@
         </activity>
         <activity android:name=".VideoViewActivity" />
         <activity android:name=".SurfaceViewActivity" />
-        <activity android:name=".MediaPlayerSurfaceViewActivity"></activity>
+        <activity android:name=".MediaPlayerSurfaceViewActivity" />
+        <activity android:name=".VitamioActivity"></activity>
     </application>
 
 </manifest>

@@ -28,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.main_surface_media_btn:
                 intent.setClass(this,MediaPlayerSurfaceViewActivity.class);
                 break;
+            case R.id.main_vitamio_btn:
+                intent.setClass(this,VitamioActivity.class);
+                break;
         }
         startActivity(intent);
     }
